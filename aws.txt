@@ -1,0 +1,35 @@
+---
+Default VPC components
+https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#default-vpc-components
+
+???.???.0.0/20
+???.???.16.0/20
+???.???.32.0/20
+
+---
+Amazon ECR interface VPC endpoints (AWS PrivateLink)
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/vpc-endpoints.html
+
+com.amazonaws.us-east-1.ecr.dkr
+com.amazonaws.us-east-1.ecr.api
+com.amazonaws.us-east-1.s3
+com.amazonaws.us-east-1.logs
+
+---
+How can I pass secrets or sensitive information securely to containers in an Amazon ECS task?
+https://aws.amazon.com/premiumsupport/knowledge-center/ecs-data-security-container-task
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "???"
+      ]
+    }
+  ]
+}

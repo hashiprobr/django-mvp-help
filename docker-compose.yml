@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  server:
+    image: drone/drone:1.9
+    volumes:
+      - /var/lib/drone:/data
+      - /etc/letsencrypt/live/???/fullchain.pem:/etc/certs/server.crt:ro
+      - /etc/letsencrypt/live/???/privkey.pem:/etc/certs/server.key:ro
+    environment:
+      DRONE_GITHUB_CLIENT_ID: ???
+      DRONE_GITHUB_CLIENT_SECRET: ???
+      DRONE_RPC_SECRET: ???
+      DRONE_SERVER_HOST: ???
+      DRONE_SERVER_PROTO: https
+      DRONE_TLS_CERT: /etc/certs/server.crt
+      DRONE_TLS_KEY: /etc/certs/server.key
+      DRONE_USER_FILTER: ???
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+
+  runner-ssh:
+    image: drone/drone-runner-ssh:1.0
+    environment:
+      DRONE_RPC_HOST: ???
+      DRONE_RPC_PROTO: https
+      DRONE_RPC_SECRET: ???
+      DRONE_RUNNER_CAPACITY: 1
+    ports:
+      - 3000:3000
+    restart: unless-stopped
