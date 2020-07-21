@@ -53,8 +53,7 @@ sudo apt-get install python3-venv python3-dev libpq-dev make gcc
 
 git clone https://github.com/hashiprobr/django-mvp-meta meta
 cd meta
-cp -r stage/admin stage/test stage/.dockerignore .
-rm -r stage
+git checkout stage
 python3 -m venv env
 
 source env/bin/activate
@@ -63,5 +62,3 @@ pip install -r requirements.txt
 git clone https://github.com/$GITHUB_REPOSITORY core
 IMAGE_NAME=stage ./services.py test -d
 deactivate
-
-sudo rm -rf meta
