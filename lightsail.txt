@@ -60,5 +60,6 @@ source env/bin/activate
 pip install wheel
 pip install -r requirements.txt
 git clone https://github.com/$GITHUB_REPOSITORY core
-IMAGE_NAME=stage ./services.py test -d
 deactivate
+
+docker-compose -f meta/test/docker-compose.yml logs
