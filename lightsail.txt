@@ -33,7 +33,7 @@ sudo apt-get install certbot
 sudo certbot certonly --standalone
 sudo certbot renew --dry-run
 
-docker-compose -d
+docker-compose up -d
 
 ---
 sudo add-apt-repository ppa:certbot/certbot
